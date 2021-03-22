@@ -1,18 +1,20 @@
-import sys
+import sys, UI # ui 파일 py 변환후 UI 임폴트 추가
 
 import PyQt5
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
-from PyQt5 import uic
+# from PyQt5 import uic            # ui 파일 py 변환후 삭제
 
-CalUI = '_uiFiles/calculator.ui'
+# CalUI = '_uiFiles/calculator.ui' # ui 파일 py 변환후 삭제
 
-class MainDialog(QDialog):
+
+class MainDialog(QDialog, UI.Ui_Dialog):
     def __init__(self): 
         QDialog.__init__(self,None,Qt.WindowStaysOnTopHint)
-        uic.loadUi(CalUI,self)
+        # uic.loadUi(CalUI,self)
+        self.setupUi
 
         # self.num_pushButton_1.clicked.connect(self.NumClicked) // 1번 버튼만 쓸때
         # self.num_pushButton_1.clicked.connect(self.NumClicked(button=self.num_pushButton_1))

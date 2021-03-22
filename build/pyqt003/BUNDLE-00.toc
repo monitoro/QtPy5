@@ -1,0 +1,1 @@
+([('pyqt003', '/Users/mango/pyject/QtPy5/dist/pyqt003', 'EXECUTABLE')],)

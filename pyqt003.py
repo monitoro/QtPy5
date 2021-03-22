@@ -11,7 +11,7 @@ CalUI = '_uiFiles/calculator.ui'
 
 class MainDialog(QDialog):
     def __init__(self): 
-        QDialog.__init__(self,None)
+        QDialog.__init__(self,None,Qt.WindowStaysOnTopHint)
         uic.loadUi(CalUI,self)
 
         # self.num_pushButton_1.clicked.connect(self.NumClicked) // 1번 버튼만 쓸때
@@ -40,6 +40,11 @@ class MainDialog(QDialog):
         self.sign_pushButton_3.clicked.connect(lambda state, button = self.sign_pushButton_3 : self.NumClicked(state, button))
         self.sign_pushButton_4.clicked.connect(lambda state, button = self.sign_pushButton_4 : self.NumClicked(state, button))
 
+        self.per_pushButton.clicked.connect(lambda state, button = self.per_pushButton: self.NumClicked(state, button))
+        self.p_close_pushButton.clicked.connect(lambda state, button = self.p_close_pushButton: self.NumClicked(state, button))
+        self.p_open_pushButton.clicked.connect(lambda state, button = self.p_open_pushButton : self.NumClicked(state, button))
+        self.dot_pushButton.clicked.connect(lambda state, button = self.dot_pushButton : self.NumClicked(state, button))
+
         self.result_pushButton.clicked.connect(self.MakeResult)
         self.reset_pushButton.clicked.connect(self.Reset)
         self.del_pushButton.clicked.connect(self.Delete)
@@ -47,9 +52,13 @@ class MainDialog(QDialog):
     def NumClicked(self, state, button):
         # print("나 클릭됐다!!")
         # print(self.num_pushButton_1.text())
+        if button == self.per_pushButton:
+            now_num_text = '*0.01'
+        else:
+            now_num_text = button.text()
 
         exist_line_text = self.q_lineEdit.text()
-        now_num_text = button.text()
+        # now_num_text = button.text()
         self.q_lineEdit.setText(exist_line_text + now_num_text )
  
     # def NumClicked2(self):
